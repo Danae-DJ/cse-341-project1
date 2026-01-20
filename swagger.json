@@ -5,7 +5,7 @@
     "description": "User Api",
     "version": "1.0.0"
   },
-  "host": "https://project1-6srq.onrender.com",
+  "host": "project1-6srq.onrender.com",
   "basePath": "/",
   "schemes": [
     "https"
