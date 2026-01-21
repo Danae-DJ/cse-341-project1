@@ -37,6 +37,28 @@ const createUser = async (req, res) => {
 };
 
 const updateUser = async (req, res) => {
+  //#swagger.tags=['Users']
+  try {
+    const userId = new ObjectId(req.params.id);
+    const user = {
+      email: req.body.email,
+      username: req.body.username,
+      name: req.body.name,
+      ipaddress: req.body.ipaddress
+    };
+
+    const response = await mongodb.getDatabase().db().collection('users').replaceOne({ _id: userId }, user);
+
+    if (response.matchedCount === 0) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+    res.status(204).send();
+  } catch (err) {
+    res.status(500).json(response.error || 'Some error occurred while updating the user.');
+  }
+};
+//teacher example:
+/*const updateUser = async (req, res) => {
     //#swagger.tags=['Users']
     const userId = new ObjectId(req.params.id);
     const user = {
@@ -51,7 +73,7 @@ const updateUser = async (req, res) => {
     } else {
         res.status(500).json(response.error || 'Some error occurred while updating the user.');
     }
-};
+};*/
 
 const deleteUser = async (req, res) => {
     //#swagger.tags=['Users']
