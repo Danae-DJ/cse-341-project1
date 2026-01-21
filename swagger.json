@@ -75,7 +75,9 @@
             "description": "Internal Server Error"
           }
         }
-      },
+      }
+    },
+    "/users/{id}": {
       "put": {
         "tags": [
           "Users"
@@ -112,9 +114,7 @@
             "description": "Internal Server Error"
           }
         }
-      }
-    },
-    "/users/{id}": {
+      },
       "get": {
         "tags": [
           "Users"
